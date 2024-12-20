@@ -37,6 +37,7 @@ export default function Home() {
                     onChange={(data) => console.log("data", data)}
                     className='text-[#0A2540] shadow-lg bg-white border-[#0A2540] border rounded-sm'
                     aiform={{
+                        apiBaseUrl: process.env.NEXT_PUBLIC_BACKEND_BASE_URL || "http://localhost:4000",
                         token: token,
                         mimeTypes: ["application/pdf"],
                         maxFileSize: 1000000,
