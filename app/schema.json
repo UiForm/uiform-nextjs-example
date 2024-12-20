@@ -1,0 +1,200 @@
+{
+    "$defs": {
+        "AddressDataSimple": {
+            "properties": {
+                "city": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "City, district, suburb, town, or village.",
+                    "title": "City"
+                },
+                "postal_code": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "ZIP or postal code. If french postal code, it should be a pure number, without letters.",
+                    "title": "Postal Code"
+                },
+                "country": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "Two-letter country code (ISO 3166-1 alpha-2).",
+                    "title": "Country"
+                },
+                "line1": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "Address line 1 (e.g., street, PO Box, or company name).",
+                    "title": "Line1"
+                },
+                "line2": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "Address line 2 (e.g., apartment, suite, unit, or building).",
+                    "title": "Line2"
+                }
+            },
+            "title": "AddressDataSimple",
+            "type": "object"
+        },
+        "PickupDeliveryDatetimeData": {
+            "properties": {
+                "date": {
+                    "anyOf": [
+                        {
+                            "format": "date",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "Date of the pickup/delivery. ISO 8601 Date Format: YYYY-MM-DD",
+                    "title": "Date"
+                },
+                "start_time": {
+                    "anyOf": [
+                        {
+                            "format": "iso-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "Start time of the pickup/delivery. ISO 8601 Time Format: hh:mm",
+                    "title": "Start Time"
+                },
+                "end_time": {
+                    "anyOf": [
+                        {
+                            "format": "iso-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "End time of the pickup/delivery. ISO 8601 Time Format: hh:mm",
+                    "title": "End Time"
+                }
+            },
+            "title": "PickupDeliveryDatetimeData",
+            "type": "object"
+        }
+    },
+    "properties": {
+        "company_name": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "description": "Name of the company.",
+            "title": "Company Name"
+        },
+        "address": {
+            "$ref": "#/$defs/AddressDataSimple",
+            "default": {
+                "city": null,
+                "postal_code": null,
+                "country": null,
+                "line1": null,
+                "line2": null
+            },
+            "description": "Address of the sender."
+        },
+        "phone_number": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "description": "Phone number of the sender.",
+            "title": "Phone Number"
+        },
+        "email_address": {
+            "anyOf": [
+                {
+                    "format": "email",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "description": "Email address of the sender.",
+            "title": "Email Address"
+        },
+        "pickup_datetime": {
+            "$ref": "#/$defs/PickupDeliveryDatetimeData",
+            "default": {
+                "date": null,
+                "start_time": null,
+                "end_time": null
+            },
+            "description": "pickup date and time in ISO 8601 format"
+        },
+        "observations": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "description": "observations about the sender",
+            "title": "Observations"
+        }
+    },
+    "title": "SenderData",
+    "type": "object"
+}
